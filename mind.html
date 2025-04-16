@@ -1,72 +1,114 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Makeup Mastercourse – Toronto</title>
+  <title>Pro Makeup One-on-One Mastercourse – Toronto</title>
   <style>
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
     }
 
     body {
-      background: #fffafd;
+      background-color: #fffafc;
       color: #333;
       line-height: 1.6;
-      padding: 20px;
+    }
+
+    nav {
+      background: #fff0f6;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav h2 {
+      color: #cc147a;
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #cc147a;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .menu a:hover {
+      color: #a40e64;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: #cc147a;
+      margin: 4px 0;
+      transition: all 0.3s ease;
     }
 
     header {
-      background: linear-gradient(to right, #ffe0f0, #fff5f9);
-      padding: 60px 20px;
+      background: #fff0f6;
+      padding: 60px 20px 40px;
       text-align: center;
-      animation: fadeIn 1s ease-in;
     }
 
     header h1 {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       color: #cc147a;
       margin-bottom: 10px;
     }
 
     header p {
       font-size: 1.1rem;
-      max-width: 650px;
-      margin: 15px auto;
+      max-width: 600px;
+      margin: 10px auto;
     }
 
-    .cta {
+    .cta, .footer-cta button {
       background: #cc147a;
       color: white;
-      padding: 14px 28px;
+      padding: 12px 25px;
       border: none;
       border-radius: 25px;
       font-size: 1rem;
-      margin-top: 25px;
+      margin-top: 20px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.3s ease-in-out;
     }
 
-    .cta:hover {
-      background-color: #a60c62;
+    .cta:hover,
+    .footer-cta button:hover {
+      background-color: #a40e64;
       transform: scale(1.05);
     }
 
     section {
-      padding: 60px 20px;
-      max-width: 950px;
+      padding: 40px 20px;
+      max-width: 900px;
       margin: auto;
-      animation: fadeUp 1s ease forwards;
-      opacity: 0;
     }
 
     .section-title {
       color: #cc147a;
-      font-size: 1.7rem;
+      font-size: 1.8rem;
       margin-bottom: 20px;
       border-bottom: 2px solid #fcd6e8;
       display: inline-block;
@@ -75,106 +117,138 @@
 
     ul {
       list-style-type: "🎯 ";
-      margin-left: 25px;
-      margin-top: 15px;
-    }
-
-    ul li {
-      margin-bottom: 10px;
+      margin-left: 20px;
     }
 
     .highlight {
-      background: #fff0f7;
+      background: #fff0f6;
       padding: 20px;
-      border-radius: 15px;
-      margin-top: 30px;
-      box-shadow: 0 0 10px rgba(204, 20, 122, 0.1);
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 0 0 transparent;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .highlight:hover {
+      box-shadow: 0 8px 16px rgba(204, 20, 122, 0.2);
     }
 
     .profile {
-      margin: 40px 0;
+      margin: 30px auto;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 25px;
+      justify-content: center;
+      gap: 20px;
     }
 
     .profile img {
-      width: 160px;
-      height: 160px;
+      width: 150px;
+      height: 150px;
       object-fit: cover;
       border-radius: 50%;
-      border: 4px solid #cc147a;
-      transition: transform 0.3s ease;
+      border: 3px solid #cc147a;
+      transition: transform 0.7s ease;
     }
 
     .profile img:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
 
     .profile-info {
       font-size: 1rem;
     }
 
-    .footer-cta {
-      background: linear-gradient(to right, #cc147a, #ff4f9e);
-      color: white;
-      text-align: center;
-      padding: 40px 20px;
-      margin-top: 60px;
-      border-radius: 25px;
-      animation: fadeIn 1.2s ease-in;
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 30px;
+      animation: fadeIn 1.5s ease-in-out;
     }
 
-    .footer-cta button {
-      background: white;
-      color: #cc147a;
-      padding: 14px 30px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 25px;
-      margin-top: 15px;
-      cursor: pointer;
-      transition: 0.3s ease;
+    .service {
+      flex: 1 1 250px;
+      background: #fff0f6;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
     }
 
-    .footer-cta button:hover {
-      background-color: #ffe0f0;
-      transform: scale(1.05);
+    .service:hover {
+      transform: translateY(-5px);
     }
 
     @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(-10px);}
-      to {opacity: 1; transform: translateY(0);}
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes fadeUp {
-      to {opacity: 1; transform: translateY(0);}
+    .footer-cta {
+      background: #cc147a;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+      border-radius: 20px;
+      margin-bottom: 25px;
+      transition: transform 0.3s ease;
     }
 
-    @media(max-width: 600px) {
-      .profile {
+    .footer-cta:hover {
+      transform: translateY(-3px);
+    }
+
+    @media(max-width: 768px) {
+      .menu {
+        display: none;
         flex-direction: column;
-        align-items: center;
+        gap: 10px;
+        background: #fff0f6;
+        padding: 15px;
+        border-radius: 10px;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
       }
 
-      header h1 {
-        font-size: 1.6rem;
+      .menu.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
       }
     }
   </style>
 </head>
 <body>
 
+  <nav>
+    <h2>Makeup Pro</h2>
+    <div class="menu" id="navMenu">
+      <a href="#learn">Learn</a>
+      <a href="#services">Services</a>
+      <a href="#fees">Fees</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </nav>
+
   <header>
     <h1>🌟 PRO MAKEUP ONE-ON-ONE MASTERCOURSE – TORONTO</h1>
-    <p>Each class costs less than your Sephora haul - but teaches you how to use all those products.<br>
-    No experience? No problem. Start your pro makeup journey here. <strong>June 21–26</strong></p>
+    <p>No experience? No problem. Start your pro makeup journey here.<br><strong>June 21–26</strong></p>
     <button class="cta">ENROL NOW</button>
-    <p>Transform your passion into a profession. This 6-day intensive course is perfect for beginners in Toronto looking to step into the world of professional makeup artistry.</p>
+    <p>Each class costs less than your Sephora haul – but teaches you how to use all those products. Transform your passion into a profession.</p>
   </header>
 
-  <section>
+  <section id="learn">
     <h2 class="section-title">What You’ll Learn</h2>
     <ul>
       <li>Signature Soft Glam makeup look</li>
@@ -182,56 +256,58 @@
       <li>Cocktail & Reception Glam</li>
       <li>Colorful Mehendi Look</li>
       <li>Mature Skin Techniques</li>
-      <li>Bonus: Lighting, Photography, & Social Media for Makeup Artists</li>
+      <li>Lighting, Photography, & Social Media</li>
     </ul>
+  </section>
 
-    <div class="profile">
-      <img src="https://www.thelist.com/img/gallery/the-drugstore-powder-that-celebrity-makeup-artists-swear-by/l-intro-1622135749.jpg
-      " alt="Makeup Artist Photo" />
-      <div class="profile-info">
-        <h3>Subtle Glam Artist</h3>
-        <p>💄 4+ years of bridal experience<br>
-        💕 500+ beautiful faces dolled<br>
-        🌍 International makeup artist<br>
-        🎓 Certified by IPGlitz & Leena Bhushan</p>
-      </div>
-    </div>
-
-    <div class="highlight">
-      <h2 class="section-title">📅 Course Details</h2>
-      <p><strong>Duration:</strong> 6 Days</p>
-      <p><strong>Timings:</strong> 8 Hours Daily</p>
-      <p><strong>Dates:</strong> June 21 – June 26</p>
-      <p><strong>Location:</strong> Mississauga, Canada (Shared after registration)</p>
-      <p><strong>Lunch:</strong> Included Daily</p>
-      <p><strong>Gift:</strong> Goodie Bag worth $200 at Completion</p>
-      <p><strong>Practice:</strong> Bring Your Models (Days 2–6)</p>
-      <p><strong>Kit:</strong> Bring Your Makeup vanity (List Provided After Sign-Up)</p>
-    </div>
-
-    <div class="highlight">
-      <h2 class="section-title">💡 Bonus Skills</h2>
-      <ul>
-        <li>Shooting Professional Photos & Videos</li>
-        <li>Lighting Tips Every MUA Needs</li>
-        <li>Social Media 101 for Brand Growth</li>
-      </ul>
-    </div>
-
-    <div class="highlight">
-      <h2 class="section-title">💰 Fee Structure</h2>
-      <p><strong>Total Fee:</strong> $1000 CAD</p>
-      <p><strong>Secure Your Spot:</strong> $300 Deposit</p>
-      <p><strong>Payment:</strong> Remainder via Cash or E-Transfer</p>
-      <p><strong>Limited Seats:</strong> Max 5 Students Only – for focused, personalised learning</p>
+  <section class="profile">
+    <img src="https://www.thelist.com/img/gallery/the-drugstore-powder-that-celebrity-makeup-artists-swear-by/l-intro-1622135749.jpg" alt="Makeup Artist Photo" />
+    <div class="profile-info">
+      <h3>Subtle Glam Artist</h3>
+      <p>💄 4+ years of bridal experience<br>
+         💕 500+ faces dolled<br>
+         🌍 International Artist<br>
+         🎓 Certified by IPGlitz & Leena Bhushan</p>
     </div>
   </section>
 
-  <div class="footer-cta">
+  <section id="services">
+    <h2 class="section-title">✨ Services Offered</h2>
+    <div class="services">
+      <div class="service">
+        <h3>Personal Makeup Classes</h3>
+        <p>Learn tailored techniques for your unique style and features.</p>
+      </div>
+      <div class="service">
+        <h3>Bridal Makeup</h3>
+        <p>Soft glam, traditional, or bold bridal looks for your big day.</p>
+      </div>
+      <div class="service">
+        <h3>Event Glam</h3>
+        <p>Perfect looks for Mehendi, Sangeet, Receptions, and more.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="fees" class="highlight">
+    <h2 class="section-title">💰 Fee Structure</h2>
+    <p><strong>Total Fee:</strong> $1000 CAD</p>
+    <p><strong>Deposit:</strong> $300 to secure your spot</p>
+    <p><strong>Payment:</strong> Remainder by Cash/E-Transfer</p>
+    <p><strong>Seats:</strong> Only 5 for focused learning</p>
+  </section>
+
+  <div class="footer-cta" id="contact">
     <h2>📲 Ready to Begin Your Makeup Journey?</h2>
     <p>Click below to reserve your seat. Limited spots available!</p>
     <button>Reserve Your Spot Now</button>
   </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navMenu").classList.toggle("active");
+    }
+  </script>
 
 </body>
 </html>
